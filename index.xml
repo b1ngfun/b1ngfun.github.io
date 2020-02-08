@@ -1,0 +1,21 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>冰放的網路筆記 | 冰放的網路筆記</title>
+        <link>https://b1ngfun.github.io/</link>
+        <description>冰放的網路筆記 | 冰放的網路筆記</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 07 Feb 2020 08:51:41 +0800</lastBuildDate><atom:link href="https://b1ngfun.github.io/" rel="self" type="application/rss+xml" /><item>
+                <title>Posts</title>
+                <link>https://b1ngfun.github.io/posts/</link>
+                <pubDate>Fri, 07 Feb 2020 08:51:41 +0800</pubDate><guid>https://b1ngfun.github.io/posts/</guid>
+                <description></description>
+            </item><item>
+                <title>關於本站</title>
+                <link>https://b1ngfun.github.io/about/</link>
+                <pubDate>Mon, 13 Jan 2020 15:42:17 +0800</pubDate><guid>https://b1ngfun.github.io/about/</guid>
+                <description>&lt;h3 id=&#34;大事紀&#34;&gt;&lt;strong&gt;大事紀&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;2020.01.13 [Hello Hugo]&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            </item></channel>
+</rss>

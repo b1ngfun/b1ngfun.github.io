@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>樹莓派安裝 Resilio Sync | 冰放的網路筆記</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="關於 LoveIt 主題"><link rel="prev" href="https://b1ngfun.github.io/2020/01/mos-for-macos/" /><link rel="next" href="https://b1ngfun.github.io/2020/02/nextcloud-migrate-data/" /><link rel="canonical" href="https://b1ngfun.github.io/2020/02/resilio-sync-pi/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff"><meta property="og:title" content="樹莓派安裝 Resilio Sync" />
+<meta property="og:description" content="1. 新增軟體源 建立文件 1 2 touch /etc/apt/sources.list.d/resilio-sync.list nano /etc/apt/sources.list.d/resilio-sync.list 2. 加入以下內容 1 deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free 編輯完畢後按Ctrl&#43;x，Y儲存。 3. 加入公鑰 1 wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc | sudo apt-key add - 4. 更新軟體源 1 2 sudo dpkg" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://b1ngfun.github.io/2020/02/resilio-sync-pi/" />
+<meta property="article:published_time" content="2020-02-06T16:50:26+08:00" />
+<meta property="article:modified_time" content="2020-02-06T16:50:26+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="樹莓派安裝 Resilio Sync"/>
+<meta name="twitter:description" content="1. 新增軟體源 建立文件 1 2 touch /etc/apt/sources.list.d/resilio-sync.list nano /etc/apt/sources.list.d/resilio-sync.list 2. 加入以下內容 1 deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free 編輯完畢後按Ctrl&#43;x，Y儲存。 3. 加入公鑰 1 wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc | sudo apt-key add - 4. 更新軟體源 1 2 sudo dpkg"/>
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "樹莓派安裝 Resilio Sync",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/b1ngfun.github.io\/2020\/02\/resilio-sync-pi\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/b1ngfun.github.io\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "Linux, Pi, ResilioSync","wordcount":  173 ,
+        "url": "https:\/\/b1ngfun.github.io\/2020\/02\/resilio-sync-pi\/","datePublished": "2020-02-06T16:50:26\x2b08:00","dateModified": "2020-02-06T16:50:26\x2b08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                "@type": "Organization",
+                "name": "B1ngfun",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/b1ngfun.github.io\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"description": ""
+    }
+    </script><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/css/lib/forkawesome/fork-awesome.min.css"><link rel="stylesheet" href="/css/lib/animate/animate.min.css"></head>
+    <body><script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script><div class="wrapper"><nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://b1ngfun.github.io/">冰放的網路筆記</a>
+        </div>
+        <div class="navbar-menu"><a class="menu-item" href="https://b1ngfun.github.io/posts" title="">文章</a><a class="menu-item" href="https://b1ngfun.github.io/tags" title="">標籤</a><a class="menu-item" href="https://b1ngfun.github.io/categories" title="">分類</a><a class="menu-item" href="https://b1ngfun.github.io/about" title="">關於</a><a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw" title="切換主題"></i></a>
+        </div>
+    </div>
+</nav><nav class="navbar-mobile">
+    <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://b1ngfun.github.io/">冰放的網路筆記</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu"><a class="menu-item" href="https://b1ngfun.github.io/posts" title="">文章</a><a class="menu-item" href="https://b1ngfun.github.io/tags" title="">標籤</a><a class="menu-item" href="https://b1ngfun.github.io/categories" title="">分類</a><a class="menu-item" href="https://b1ngfun.github.io/about" title="">關於</a><a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw" title="切換主題"></i></a>
+        </div>
+    </div>
+</nav>
+<main class="main">
+                <div class="container"><article class="page"><h1 class="post-title animated flipInX">樹莓派安裝 Resilio Sync</h1><div class="post-meta">
+            <div class="post-meta-main"><a class="author" href="https://b1ngfun.github.io/" rel="author" target="_blank">
+                    <i class="fas fa-user-circle fa-fw"></i>B1ngfun
+                </a>&nbsp;<span class="post-category">收錄於&nbsp;<i class="far fa-folder fa-fw"></i><a href="https://b1ngfun.github.io/categories/linux/">Linux</a>&nbsp;</span></div>
+            <div class="post-meta-other"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-02-06>2020-02-06</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>173 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>預計閱讀 1 分鐘&nbsp;</div>
+        </div><div class="post-content"><a class="post-dummy-target" id="1-新增軟體源"></a><h3>1. 新增軟體源</h3>
+<a class="post-dummy-target" id="建立文件"></a><h5>建立文件</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">touch /etc/apt/sources.list.d/resilio-sync.list
+nano /etc/apt/sources.list.d/resilio-sync.list
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="2-加入以下內容"></a><h3>2. 加入以下內容</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free
+</code></pre></td></tr></table>
+</div>
+</div><p>編輯完畢後按Ctrl+x，Y儲存。</p>
+<a class="post-dummy-target" id="3-加入公鑰"></a><h3>3. 加入公鑰</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc <span class="p">|</span> sudo apt-key add -
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="4-更新軟體源"></a><h3>4. 更新軟體源</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo dpkg --add-architecture armhf
+sudo apt-get update
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="5-在--etcaptsourceslist--中新增"></a><h3>5. 在  /etc/apt/sources.list  中新增</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">deb <span class="o">[</span><span class="nv">arch</span><span class="o">=</span>armhf<span class="o">]</span> http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="6-開始安裝"></a><h3>6. 開始安裝</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get update
+sudo apt-get install resilio-sync
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="7-安裝完成移除軟體源"></a><h3>7. 安裝完成移除軟體源</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">rm /etc/apt/sources.list.d/resilio-sync.list
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="8-設定開機啟動"></a><h3>8. 設定開機啟動</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl <span class="nb">enable</span> resilio-sync
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="開啟瀏覽器-預設port為8888"></a><h5>開啟瀏覽器 預設port為8888</h5>
+<a class="post-dummy-target" id="ex-19216801008888"></a><h5>ex. 192.168.0.100:8888</h5>
+<a class="post-dummy-target" id="9-資料夾權限錯誤解決辦法"></a><h3>9. 資料夾權限錯誤解決辦法</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">chown -R rslsync /資料夾路徑
+</code></pre></td></tr></table>
+</div>
+</div><p>資料來源</p>
+<p><a href="https://www.jianshu.com/p/db301108383b">https://www.jianshu.com/p/db301108383b</a></p>
+<p><a href="https://totoro.ink/bash/raspberry-resilio-sync.html">https://totoro.ink/bash/raspberry-resilio-sync.html</a></p>
+<p><a href="https://dietpi.com/phpbb/viewtopic.php?t=2086">https://dietpi.com/phpbb/viewtopic.php?t=2086</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新於 2020-02-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share"><span><a href="//twitter.com/share?url=https%3a%2f%2fb1ngfun.github.io%2f2020%2f02%2fresilio-sync-pi%2f&amp;text=%e6%a8%b9%e8%8e%93%e6%b4%be%e5%ae%89%e8%a3%9d%20Resilio%20Sync&amp;via=" target="_blank" title="分享到 Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fb1ngfun.github.io%2f2020%2f02%2fresilio-sync-pi%2f" target="_blank" title="分享到 Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a><a href="//reddit.com/submit?url=https%3a%2f%2fb1ngfun.github.io%2f2020%2f02%2fresilio-sync-pi%2f&amp;title=%e6%a8%b9%e8%8e%93%e6%b4%be%e5%ae%89%e8%a3%9d%20Resilio%20Sync" target="_blank" title="分享到 Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a></span></div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section><span class="tag">
+                        <a href="https://b1ngfun.github.io/tags/linux/"><i class="fas fa-tag fa-fw"></i>&nbsp;Linux</a>&nbsp;
+                    </span><span class="tag">
+                        <a href="https://b1ngfun.github.io/tags/pi/"><i class="fas fa-tag fa-fw"></i>&nbsp;Pi</a>&nbsp;
+                    </span><span class="tag">
+                        <a href="https://b1ngfun.github.io/tags/resiliosync/"><i class="fas fa-tag fa-fw"></i>&nbsp;ResilioSync</a>&nbsp;
+                    </span></section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://b1ngfun.github.io/">首頁</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://b1ngfun.github.io/2020/01/mos-for-macos/" class="prev" rel="prev" title="Mos for macOS 讓你的外接滑鼠使用起來跟觸控板一樣舒服"><i class="fas fa-angle-left fa-fw"></i>Mos for macOS 讓你的外接滑鼠使用起來跟觸控板一樣舒服</a>
+            <a href="https://b1ngfun.github.io/2020/02/nextcloud-migrate-data/" class="next" rel="next" title="Nextcloud 同步硬碟檔案">Nextcloud 同步硬碟檔案<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div class="post-comment"></div>
+    </article></div>
+            </main><footer class="footer">
+    <div class="copyright"><div class="copyright-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> | Theme-<a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+
+        <div class="copyright-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://b1ngfun.github.io/" target="_blank">B1ngfun</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+</div><a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll>
+            <span>&nbsp;</span>
+        </a><script src="/js/lib/jquery/jquery.slim.min.js"></script><script src="/js/lib/lazysizes/lazysizes.min.js"></script><script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script><link rel="stylesheet" href="/css/lib/katex/katex.min.css"><script src="/js/lib/katex/katex.min.js"></script><script defer src="/js/lib/katex/auto-render.min.js"></script><link rel="stylesheet" href="/css/lib/katex/copy-tex.min.css"><script defer src="/js/lib/katex/copy-tex.min.js"></script><script defer src="/js/lib/katex/mhchem.min.js"></script><script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true },{ left: "$", right: "$", display: false },]
+            });
+        });
+    </script><script src="/js/blog.min.js"></script>
+</body>
+</html>

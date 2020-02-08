@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ResilioSync on 冰放的網路筆記</title>
+    <link>https://b1ngfun.github.io/tags/resiliosync/</link>
+    <description>Recent content in ResilioSync on 冰放的網路筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 06 Feb 2020 16:50:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://b1ngfun.github.io/tags/resiliosync/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>樹莓派安裝 Resilio Sync</title>
+      <link>https://b1ngfun.github.io/2020/02/resilio-sync-pi/</link>
+      <pubDate>Thu, 06 Feb 2020 16:50:26 +0800</pubDate>
+      
+      <guid>https://b1ngfun.github.io/2020/02/resilio-sync-pi/</guid>
+      <description>1. 新增軟體源 建立文件 1 2 touch /etc/apt/sources.list.d/resilio-sync.list nano /etc/apt/sources.list.d/resilio-sync.list 2. 加入以下內容 1 deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free 編輯完畢後按Ctrl+x，Y儲存。 3. 加入公鑰 1 wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc | sudo apt-key add - 4. 更新軟體源 1 2 sudo dpkg</description>
+    </item>
+    
+  </channel>
+</rss>

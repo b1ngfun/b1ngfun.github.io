@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apps on 冰放的網路筆記</title>
+    <link>https://b1ngfun.github.io/tags/apps/</link>
+    <description>Recent content in Apps on 冰放的網路筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 14 Jan 2020 13:31:12 +0800</lastBuildDate>
+    
+	<atom:link href="https://b1ngfun.github.io/tags/apps/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mos for macOS 讓你的外接滑鼠使用起來跟觸控板一樣舒服</title>
+      <link>https://b1ngfun.github.io/2020/01/mos-for-macos/</link>
+      <pubDate>Tue, 14 Jan 2020 13:31:12 +0800</pubDate>
+      
+      <guid>https://b1ngfun.github.io/2020/01/mos-for-macos/</guid>
+      <description>說Mos是macOS外接滑鼠的救星一點也不為過，我在家的時候使用Mac幾乎都是使用外接的滑鼠鍵盤，但外接滑鼠的滾動方向卻跟觸控板相反，使用上</description>
+    </item>
+    
+  </channel>
+</rss>

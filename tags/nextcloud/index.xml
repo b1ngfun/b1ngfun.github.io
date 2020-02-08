@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NextCloud on 冰放的網路筆記</title>
+    <link>https://b1ngfun.github.io/tags/nextcloud/</link>
+    <description>Recent content in NextCloud on 冰放的網路筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 07 Feb 2020 08:51:41 +0800</lastBuildDate>
+    
+	<atom:link href="https://b1ngfun.github.io/tags/nextcloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nextcloud 同步硬碟檔案</title>
+      <link>https://b1ngfun.github.io/2020/02/nextcloud-migrate-data/</link>
+      <pubDate>Fri, 07 Feb 2020 08:51:41 +0800</pubDate>
+      
+      <guid>https://b1ngfun.github.io/2020/02/nextcloud-migrate-data/</guid>
+      <description>將檔案放入Nextcloud/使用者/files資料夾內 執行 1 2 cd /var/www/nextcloud #nextcloud網頁目錄 sudo -u www-data php console.php files:scan --all 資料來源： https://help.nextcloud.com/t/tutorial-how-to-migrate-mass-data-to-a-new-nextcloud-server/9418</description>
+    </item>
+    
+  </channel>
+</rss>
