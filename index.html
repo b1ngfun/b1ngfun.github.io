@@ -81,7 +81,7 @@
     </h1><div class="post-meta"><a class="author" href="https://b1ngfun.github.io/" rel="author" target="_blank">
             <i class="fas fa-user-circle fa-fw"></i>B1ngfun
         </a>發布時間  <time datetime=2020-02-06>2020-02-06</time>&nbsp;<span class="post-category">收錄於&nbsp;<i class="far fa-folder fa-fw"></i>
-                        <a href="https://b1ngfun.github.io/categories/linux/">Linux</a></span></div><div class="post-content">1. 新增軟體源 建立文件 1 2 touch /etc/apt/sources.list.d/resilio-sync.list nano /etc/apt/sources.list.d/resilio-sync.list 2. 加入以下內容 1 deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free 編輯完畢後按Ctrl+x，Y儲存。 3. 加入公鑰 1 wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc | sudo apt-key add - 4. 更新軟體源 1 2 sudo dpkg</div><div class="post-footer">
+                        <a href="https://b1ngfun.github.io/categories/linux/">Linux</a></span></div><div class="post-content">1. 新增軟體源 建立文件 1 nano /etc/apt/sources.list.d/resilio-sync.list 加入以下內容 1 deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free 2. 加入公鑰 1 wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc | sudo apt-key add - 3. 更新軟體源 1 2 sudo dpkg --add-architecture armhf sudo apt-get update 4. 編輯/etc/apt/sour</div><div class="post-footer">
         <a href="https://b1ngfun.github.io/2020/02/resilio-sync-pi/">閱讀全文</a><div class="post-tags"><span class="tag">
                         &nbsp;<a href="https://b1ngfun.github.io/tags/linux/"><i class="fas fa-tag fa-fw"></i>&nbsp;Linux</a>
                     </span><span class="tag">
